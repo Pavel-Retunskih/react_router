@@ -1,17 +1,16 @@
 import styles from "./components/Site.module.css";
-import { PageOne } from "./components/pages/PageOne";
-import { PageTwo } from "./components/pages/PageTwo";
-import { PageThree } from "./components/pages/PageThree";
 import { NavLink, Navigate, Route, Routes } from "react-router-dom";
 import { Error404 } from "./components/pages/Error404";
 import { S } from "./components/pages/_styles";
 import { Model } from "./components/pages/Model";
+import { Adidas, Puma, Abibas, Prices } from "./components/pages";
 
 const PATH = {
   PAGE1: "/adidas",
   PAGE2: "/puma",
   PAGE3: "/abibas",
-  MODEL: "/model",
+  PAGE4: "/prices",
+  MODEL: ":model/:id",
   ERROR: "/error404",
 } as const;
 
@@ -32,14 +31,18 @@ function App() {
           <S.NavWrapper>
             <NavLink to={PATH.PAGE3}>Abibas</NavLink>
           </S.NavWrapper>
+          <S.NavWrapper>
+            <NavLink to={PATH.PAGE4}>Prices</NavLink>
+          </S.NavWrapper>
         </div>
         <div className={styles.content}>
           <Routes>
-            <Route path={PATH.PAGE1} element={<PageOne />} />
+            <Route path={PATH.PAGE1} element={<Adidas />} />
             <Route path="/" element={<Navigate to={PATH.PAGE1} />} />
-            <Route path={PATH.PAGE2} element={<PageTwo />} />
-            <Route path={PATH.PAGE3} element={<PageThree />} />
-            <Route path={`:model/:id`} element={<Model />} />
+            <Route path={PATH.PAGE2} element={<Puma />} />
+            <Route path={PATH.PAGE3} element={<Abibas />} />
+            <Route path={PATH.PAGE4} element={<Prices />} />
+            <Route path={PATH.MODEL} element={<Model />} />
 
             <Route path={PATH.ERROR} element={<Error404 />} />
             <Route path="/*" element={<Navigate to={PATH.ERROR} />} />

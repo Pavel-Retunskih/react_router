@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import adidas_1 from "../../assets/adidas_1.jpg";
 import adidas_2 from "../../assets/adidas_2.jpg";
 import adidas_3 from "../../assets/adidas_3.jpg";
@@ -53,6 +53,7 @@ export const Adidas = () => {
         ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..",
         comes from a line in section 1.10.32.
       </p>
+      <Outlet />
     </div>
   );
 };

@@ -1,19 +1,7 @@
 import styles from "./components/Site.module.css";
-import { NavLink, Navigate, Route, Routes } from "react-router-dom";
-import { Error404 } from "./components/pages/Error404";
+import { NavLink, Outlet } from "react-router-dom";
 import { S } from "./components/pages/_styles";
-import { Model } from "./components/pages/Model";
-import { Adidas, Puma, Abibas, Prices } from "./components/pages";
-
-const PATH = {
-  PAGE1: "/adidas",
-  PAGE2: "/puma",
-  PAGE3: "/abibas",
-  PAGE4: "/prices",
-  MODEL: ":model/:id",
-  ERROR: "/error404",
-} as const;
-
+import { PATH } from "./routing/router";
 function App() {
   return (
     <div>
@@ -36,7 +24,8 @@ function App() {
           </S.NavWrapper>
         </div>
         <div className={styles.content}>
-          <Routes>
+          <Outlet />
+          {/* <Routes>
             <Route path={PATH.PAGE1} element={<Adidas />} />
             <Route path="/" element={<Navigate to={PATH.PAGE1} />} />
             <Route path={PATH.PAGE2} element={<Puma />} />
@@ -46,7 +35,7 @@ function App() {
 
             <Route path={PATH.ERROR} element={<Error404 />} />
             <Route path="/*" element={<Navigate to={PATH.ERROR} />} />
-          </Routes>
+          </Routes> */}
         </div>
       </div>
       <div className={styles.footer}>abibas 2023</div>
